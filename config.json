@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb://localhost/node-mongo-registration-login-api",
+    "secret": "WS2WTteP1kez8XPnNAbqtg%3d%3d"
+}
