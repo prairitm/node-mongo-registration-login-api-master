@@ -1,4 +1,4 @@
 ﻿{
-    "connectionString": "mongodb://localhost/node-mongo-registration-login-api",
+    "connectionString": "mongodb+srv://developer:iSarthik@cluster0.yyjzw.mongodb.net/users?retryWrites=true&w=majority",
     "secret": "WS2WTteP1kez8XPnNAbqtg%3d%3d"
 }
