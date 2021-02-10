@@ -1,4 +1,4 @@
 ﻿{
-    "connectionString": "mongodb+srv://developer:isarthik@cluster0.yyjzw.mongodb.net/users?retryWrites=true&w=majority",
+    "connectionString": "mongodb+srv://developer:Password321@cluster0.yyjzw.mongodb.net/isarthik?retryWrites=true&w=majority",
     "secret": "WS2WTteP1kez8XPnNAbqtg%3d%3d"
 }
