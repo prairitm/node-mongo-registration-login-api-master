@@ -8,7 +8,6 @@ const errorHandler = require('_helpers/error-handler');
 const db = require('_helpers/db');
 const clicks = db.Clicks
 const userService = require('./users/user.service');
-let io = require('socket.io')(http);
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
