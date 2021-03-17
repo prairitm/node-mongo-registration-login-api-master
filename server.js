@@ -8,8 +8,8 @@ const errorHandler = require('_helpers/error-handler');
 const db = require('_helpers/db');
 const clicks = db.Clicks
 const userService = require('./users/user.service');
-var http = require('http').Server(app);
-const io = require('socket.io')(http);
+let https = require('https').Server(app);
+const io = require('socket.io')(https);
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
