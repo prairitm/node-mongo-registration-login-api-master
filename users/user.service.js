@@ -7,6 +7,7 @@ const User = db.User;
 module.exports = {
     authenticate,
     getAll,
+    getCount,
     getById,
     create,
     update,
@@ -26,6 +27,11 @@ async function authenticate({ username, password }) {
 
 async function getAll() {
     return await User.find();
+}
+
+async function getCount() {
+    const numUsers = User.countDocuments();
+    return await numUsers;
 }
 
 async function getById(id) {

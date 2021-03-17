@@ -1,4 +1,5 @@
 ﻿const express = require('express');
+const { count } = require('./user.model');
 const router = express.Router();
 const userService = require('./user.service');
 
@@ -6,10 +7,13 @@ const userService = require('./user.service');
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
+router.get('/usercount', usercount);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
+router.post('/clicked', addclick);
+
 
 module.exports = router;
 
@@ -19,9 +23,21 @@ function authenticate(req, res, next) {
         .catch(err => next(err));
 }
 
+function addclick(req, res, next) {
+    const click = {clickTime: new Date(), test:'test123'};
+    addclick(req.body)
+        .then(() => res.json({click}))
+}
+
 function register(req, res, next) {
     userService.create(req.body)
         .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function usercount(req, res, next) {
+    userService.getCount()
+        .then(numUsers => res.json(numUsers))
         .catch(err => next(err));
 }
 
