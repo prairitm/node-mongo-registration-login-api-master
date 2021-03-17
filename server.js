@@ -8,7 +8,7 @@ const errorHandler = require('_helpers/error-handler');
 const db = require('_helpers/db');
 const clicks = db.Clicks
 const userService = require('./users/user.service');
-const http = require('http').Server(app);
+var http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 
