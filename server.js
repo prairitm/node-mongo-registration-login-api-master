@@ -8,6 +8,7 @@ const errorHandler = require('_helpers/error-handler');
 const db = require('_helpers/db');
 const clicks = db.Clicks
 const userService = require('./users/user.service');
+let io = require('socket.io')(http);
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +20,36 @@ app.use(jwt());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
+
+io.on('connection', (socket) => {
+
+  socket.emit('connections', Object.keys(io.sockets.connected).length);
+
+  socket.on('disconnect', () => {
+      console.log("A user disconnected");
+  });
+
+  socket.on('chat-message', (data) => {
+      socket.broadcast.emit('chat-message', (data));
+  });
+
+  socket.on('typing', (data) => {
+      socket.broadcast.emit('typing', (data));
+  });
+
+  socket.on('stopTyping', () => {
+      socket.broadcast.emit('stopTyping');
+  });
+
+  socket.on('joined', (data) => {
+      socket.broadcast.emit('joined', (data));
+  });
+
+  socket.on('leave', (data) => {
+      socket.broadcast.emit('leave', (data));
+  });
+
+});
 
 // app.post('/clicked', (req, res) => {
 //     const click = {clickTime: new Date(), test:'test123'};
